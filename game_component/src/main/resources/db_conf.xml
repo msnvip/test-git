@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<database>
+	<instance name="self_test" type="singler" timestamp="2012-07-28 18:19:05">
+		<server type="mysql" database="self_test" host="192.168.1.103"
+			port="3306" wrflag="w" charset="utf8" priority="" user="fenglei"
+			password="fenglei" initPoolSize="0" maxPoolSize="1000" />
+		<server type="mysql" database="self_test" host="192.168.1.103"
+			port="3306" wrflag="r" charset="utf8" priority="" user="fenglei"
+			password="fenglei" />
+	</instance>
+</database>
+
