@@ -11,6 +11,8 @@ package org.you.game.sango.dao;
  * @since 1.0
  */
 public class DbConstant {
+	/** 测试database **/
+	public static final String DB_TEST = "sango_dev";
 	
 	/** 用户id映射表 **/
 	public static final String TABLE_USER_MAPPING = "user_mapping";

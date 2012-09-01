@@ -2,7 +2,7 @@ package org.you.game.sango.dao;
 
 import org.you.game.sango.model.UidMappingModel;
 
-public interface IUidMappingMgr {
+public interface IUidMappingDao {
 
 	public UidMappingModel getUserMapping(long userId);
 	
