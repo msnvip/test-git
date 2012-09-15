@@ -6,9 +6,9 @@
   <artifactId>skill.server</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
-	<modules>
-		<module>game_component</module>
-		<module>game_server</module>
+	<modules>		
+		<module>../game_component</module>
+		<module>../game_server</module>
 	</modules>
   <name>skill.server</name>
   <url>http://maven.apache.org</url>
