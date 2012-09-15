@@ -14,11 +14,18 @@ define(['jquery', 'underscore', 'backbone',
 		则Backbone会根据routes的设定执行对应的方法
        */
         routes: {
-        	'':    'showHome',           						//home view
-        	'home': 'showHome',         						//home view as well
-	        'contact': 'showContact',         					//list view
-	        'contactdetail/:name/:id' : 'showContactDetail',   	//detail view
-	        '*actions': 'defaultAction' 						//default action
+        	'':    'showHome',           								//home view
+        	'home': 'showHome',         								//home view as well
+	        	
+        	'contact': 'showContact',         							//list view
+	        'contactdetail/:name/:id' : 'showContactDetail',   			//detail view
+	        
+	        //====================================================//
+	        'skills/:category': 'showSkills',         					//list skill view
+	        'skillDetail/:category/:id': 'showSkillDetail',         	//skill detail view
+	        //====================================================//
+	        
+	        '*actions': 'defaultAction' 								//default action
         },
 	    
 	    firstPage:true,
@@ -37,6 +44,25 @@ define(['jquery', 'underscore', 'backbone',
 	    	this.changePage(homeView);
 	    },
 
+	    /**
+	     * 显示特定类型的技能交换列表
+	     */
+	    showSkills(category){
+	    	var skillList = new SkillListModel(category);
+	    	var skillListView = new SkillListView({collection: skillList});
+	    	skillListView.bind("renderCompleted:SkillList", this.triggerChangeView, this);
+	    	skillList.fetch();
+	    }
+	    /**
+	     * 显示详细的技能交换信息
+	     */
+	    showSkillDetail(category,id){
+	    	var skillInfo = new SkillModel(category,id);
+	    	var skillView = new SkillView({model: skillInfo});
+	    	skillView.bind("renderCompleted:Skill", this.triggerChangeView, this);
+	    	skillInfo.fetch();
+	    }
+	    
 	    showContact:function(actions){
 	    	//first, we fetch data to initialize view
 	    	var contactList=new ContactCollection();
@@ -66,6 +92,8 @@ define(['jquery', 'underscore', 'backbone',
 	    	console.log("changePage" + view.el);
             //设定外层div容器的data-role为'page'，以支持jquery mobile
 			$(view.el).attr('data-role', 'page');   
+			$(view.el).attr('data-theme', 'a');   
+			
                 //插入dom
       		$('body').append($(view.el));  
 			var transition = $.mobile.defaultPageTransition;  

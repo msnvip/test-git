@@ -1,10 +1,12 @@
-.content-primary {
-	padding: 15px;
-}
-
-.listTitle{
+.list-title{
 	text-align: center;
 }
+/*
+.content-primary {
+	padding: 0 15px 0 15px ;
+}
+
+
 p.intro {
 	margin: 2em 0;
 }
@@ -19,4 +21,4 @@ p.intro {
 	background: none;
 	margin: 1.5em 0;
 	padding: 1.5em 15px 0;
-}
+}*/

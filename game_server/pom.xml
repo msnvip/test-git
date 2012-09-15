@@ -48,18 +48,5 @@
     </plugins>
   </build>
 
-  <dependencies>
-    <!--dependency>
-      <groupId>org.fenglei</groupId>
-      <artifactId>[the artifact id of the block to be mounted]</artifactId>
-      <version>0.0.1-SNAPSHOT</version>
-    </dependency-->
-    <dependency>
-    	<groupId>org.you.game</groupId>
-    	<artifactId>game-component</artifactId>
-    	<version>0.0.1-SNAPSHOT</version>
-    	<scope>provided</scope> 
-    </dependency>
-  </dependencies>
 
 </project>

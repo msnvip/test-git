@@ -7,24 +7,15 @@
           <string>WEB-INF/applicationContext.xml</string>
           <string>WEB-INF/log4j.xml</string>
           <string>WEB-INF/web.xml</string>
-          <string>WEB-INF/classes/org/you/game/sango/dao/impl/UidMappingMgr.class</string>
-          <string>WEB-INF/classes/org/you/game/sango/dao/IUidMappingMgr.class</string>
+          <string>WEB-INF/classes/org/you/game/sango/dao/DbConstant.class</string>
+          <string>WEB-INF/classes/org/you/game/sango/dao/impl/UidMappingDaoImpl$1.class</string>
+          <string>WEB-INF/classes/org/you/game/sango/dao/impl/UidMappingDaoImpl.class</string>
+          <string>WEB-INF/classes/org/you/game/sango/dao/IUidMappingDao.class</string>
+          <string>WEB-INF/classes/org/you/game/sango/model/SkillCategory.class</string>
           <string>WEB-INF/classes/org/you/game/sango/model/UidMappingModel.class</string>
         </pathsSet>
       </path-set>
     </entry>
   </registeredFiles>
-  <dependenciesInfo>
-    <org.apache.maven.plugin.war.util.DependencyInfo>
-      <dependency>
-        <groupId>org.you.game</groupId>
-        <artifactId>game-component</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <type>jar</type>
-        <scope>provided</scope>
-        <exclusions/>
-        <optional>false</optional>
-      </dependency>
-    </org.apache.maven.plugin.war.util.DependencyInfo>
-  </dependenciesInfo>
+  <dependenciesInfo/>
 </webapp-structure>
