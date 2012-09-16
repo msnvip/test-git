@@ -8,6 +8,8 @@ import java.sql.ResultSet;
 import java.util.Date;
 import java.util.Set;
 
+import org.apache.log4j.Logger;
+
 /**
  *
  * @author <a href="mailto:msnvip@msn.cn">msnvip</a>
@@ -15,6 +17,7 @@ import java.util.Set;
  * @since 1.0
  */
 public class SkillInfo {
+static Logger logger = Logger.getLogger(SkillInfo.class);
 
 	private int id;	
 	private long userId;
@@ -49,9 +52,9 @@ public class SkillInfo {
 		SkillInfo skillInfo = new SkillInfo();
 		try {
 			skillInfo.setAge(rs.getInt("age"));
-			skillInfo.setAreaId(rs.getInt("areaId"));
+			skillInfo.setAreaId(rs.getInt("area_id"));
 			skillInfo.setCategory(rs.getInt("category"));
-			skillInfo.setCityId(rs.getInt("cityId"));
+			skillInfo.setCityId(rs.getInt("city_id"));
 			skillInfo.setContent(rs.getString("content"));
 			skillInfo.setCreateTime(rs.getDate("create_time"));
 			skillInfo.setEmail(rs.getString("email"));
@@ -70,7 +73,8 @@ public class SkillInfo {
 			skillInfo.setUserId(rs.getLong("user_id"));
 			return skillInfo;
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
+			logger.error("error",e);
 		}
 		
 		return null;

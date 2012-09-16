@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
@@ -20,6 +21,8 @@ import com.google.gson.JsonObject;
  *
  */
 public abstract class BaseAction extends Action{
+	static Logger logger = Logger.getLogger(BaseAction.class);
+	
 	protected String operate = "";
 	protected boolean isAjax = false;
 	protected long userId = 0L;
@@ -43,7 +46,8 @@ public abstract class BaseAction extends Action{
 		try {
 			result = customeExecute(mapping, form, request, response);			
 		} catch (Exception e) {
-			writeJsonFail(e, response);
+			logger.error("error",e);
+			writeJsonFail("error", response);
 			return null;
 		}finally{
 			response.addHeader("sk", sk);
