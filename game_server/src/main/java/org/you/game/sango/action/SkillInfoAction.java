@@ -52,6 +52,16 @@ public class SkillInfoAction extends BaseAction{
 		
 		return null;
 	}
+
+	@Override
+	protected boolean checkSkValid(String sk) {
+		return super.checkSkValid(sk);
+	}
+
+	@Override
+	protected long parseUserId(String sk) {
+		return 10000L;
+	}
 	
 	
 	
