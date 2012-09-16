@@ -102,6 +102,8 @@ public abstract class BaseAction extends Action{
 		fullResult.addProperty("code", code);
 		fullResult.addProperty("data", data);
 		
+		resp.setCharacterEncoding("UTF-8");
+		
 		resp.getWriter().write(gson.toJson(fullResult));
 		resp.getWriter().flush();
 		resp.getWriter().close();
