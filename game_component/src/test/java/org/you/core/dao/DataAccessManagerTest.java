@@ -33,9 +33,9 @@ public class DataAccessManagerTest {
 	
 	@Test
 	public void testModel() throws SQLException{
-		String sql = " select * from test ";
+		String sql = " select * from skill_info ";
 		
-		OpList op = new OpList(sql, "self_test"){
+		OpList op = new OpList(sql, "skill_db_1"){
 
 			@Override
 			public Object parse(ResultSet rs) throws SQLException {

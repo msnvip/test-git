@@ -3,7 +3,7 @@
 	<instance name="self_test" type="singler" timestamp="2012-07-28 18:19:05">
 		<server type="mysql" database="skill" host="192.168.1.105"
 			port="3306" wrflag="w" charset="utf8" priority="" user="skill"
-			password="skill_2012" initPoolSize="0" maxPoolSize="1000" />
+			password="skill_2012" initPoolSize="0" maxPoolSize="10" />
 		<server type="mysql" database="skill" host="192.168.1.105"
 			port="3306" wrflag="r" charset="utf8" priority="" user="skill"
 			password="skill_2012" />
