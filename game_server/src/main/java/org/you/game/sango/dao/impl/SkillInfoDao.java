@@ -85,6 +85,8 @@ public class SkillInfoDao implements ISkillInfoDao{
 		return info;
 	}
 
+	
+	
 	@Override
 	public void addSkillInfo(final SkillInfo skillInfo) {
 		String sql = "insert into skill_info( user_id, category, title, tag_str, content, create_time,"+ 
@@ -120,6 +122,46 @@ public class SkillInfoDao implements ISkillInfoDao{
 		
 		try {
 			int newId = DataAccessManager.getInstance().insertReturnId(op);
+		} catch (SQLException e) {
+			logger.error("error new",e);
+		}
+	}
+
+	@Override
+	public void updateSkillInfo(final SkillInfo skillInfo) {
+		String sql = "update skill_info  set user_id=?, category=?, title=?, tag_str=?, content=?, create_time=?,"+ 
+			  	"have_skill=?, hope_skill=?, nick_name=?, self_sex=?, province_id=?, city_id=?,"+ 
+			  	"area_id=?, age=?, hope_sex=?, email=?, qq=?, phone=?, tel=? " +
+			  	" where id = ?)";
+		OpUpdate op = new OpUpdate(sql, "skill"){
+			@Override
+			public void setParam(PreparedStatement ps) throws SQLException {
+				ps.setLong(1, skillInfo.getUserId());
+				ps.setInt(2, skillInfo.getCategory());
+				ps.setString(3, skillInfo.getTitle());
+				ps.setString(4, skillInfo.getTagStr());
+				ps.setString(5, skillInfo.getContent());
+				ps.setDate(6, new java.sql.Date(skillInfo.getCreateTime().getTime()));
+				ps.setString(7, skillInfo.getHaveSkill());
+				ps.setString(8, skillInfo.getHopeSkill());
+				ps.setString(9, skillInfo.getNickName());
+				ps.setInt(10, skillInfo.getSelfSex());
+				ps.setInt(11, skillInfo.getProvinceId());
+				ps.setInt(12, skillInfo.getCityId());
+				ps.setInt(13, skillInfo.getAreaId());
+				ps.setInt(14, skillInfo.getAge());
+				ps.setString(15, skillInfo.getHopeSex());
+				ps.setString(16, skillInfo.getEmail());
+				ps.setString(17, skillInfo.getQq());
+				ps.setString(18, skillInfo.getPhone());
+				ps.setString(19, skillInfo.getTel());
+				
+				ps.setInt(20, skillInfo.getId());
+			}
+		};
+		
+		try {
+			int newId = DataAccessManager.getInstance().update(op);
 		} catch (SQLException e) {
 			logger.error("error new",e);
 		}

@@ -26,4 +26,6 @@ public interface ISkillInfoDao {
 	public SkillInfo getSkillInfo(long userId, int infoId);
 	
 	public void addSkillInfo(SkillInfo skillInfo);
+	
+	public void updateSkillInfo(SkillInfo skillInfo);
 }

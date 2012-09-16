@@ -94,6 +94,12 @@ public class SkillSimpleInfo {
 	public void setCreateTime(int createTime) {
 		this.createTime = createTime;
 	}
+
+	@Override
+	public String toString() {
+		return "SkillSimpleInfo [id=" + id + ", userId=" + userId + ", title=" + title + ", haveSkill=" + haveSkill + ", hopeSkill="
+				+ hopeSkill + ", nickName=" + nickName + ", createTime=" + createTime + "]";
+	}
 	
 	
 	
