@@ -103,7 +103,8 @@ public abstract class BaseAction extends Action{
 		fullResult.addProperty("data", data);
 		
 		resp.setCharacterEncoding("UTF-8");
-		
+		resp.setHeader("content-type", "application/json;charset=UTF-8");
+
 		resp.getWriter().write(gson.toJson(fullResult));
 		resp.getWriter().flush();
 		resp.getWriter().close();
