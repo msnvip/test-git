@@ -1,18 +1,34 @@
 
 <div data-role="header" data-position="fixed">
-	<h1>联系人</h1>
-	<a href="#home" data-icon="home" data-iconpos="notext"
+	<h1>技能交换信息</h1>
+	<a href="#home" data-inline="true"  data-icon="home" data-iconpos="notext"
 		data-direction="reverse">Home</a>
+	<a href="#home" data-inline="true"  data-icon="plus"
+		data-direction="reverse">新建</a>
 </div>
 
 <div data-role="content">
-	<ul data-role="listview" data-inset="true">
+	<div class="skill_page">
+		<% if(currentSkillPage > 0){ %>
+		<a href="#skills/<%=currentSkillCategory%>/<%=(currentSkillPage*1-1)%>" data-inline="true" 
+			data-role="button" data-icon="arrow-l">上一页</a>
+		<%}%>
+		<% if(data.length >= SkillPageSize){ %>
+		<a href="#skills/<%=currentSkillCategory%>/<%=(currentSkillPage*1+1)%>" data-inline="true"
+			data-role="button" data-icon="arrow-r" data-iconpos="right">下一页</a>
+		<%}%>
+	</div>
+	<ul data-role="listview" data-inset="true" class="skill_list_view">
 		<% for (var i = 0; i < data.length; i++) { %>
 		 	<% var item = data[i];%>
 			<li>
-				<a href="#contactdetail/<%=item.name%>/<%= item.id%>"><%=item.name %></a>
+				<a href="#skillDetail/<%=item.userId%>/<%= item.id%>">				
+				<h3><%=item.title %></h3>
+				<p>Broken Bells</p>				
+				</a>
 			</li>
 		<% } %>
 	</ul>
+	
 </div>
 <!-- /content -->

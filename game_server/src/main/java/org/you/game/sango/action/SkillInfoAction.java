@@ -24,13 +24,12 @@ import org.you.game.sango.model.SkillSimpleInfo;
  * @version 1.0
  * @since 1.0
  */
-public class SkillInfoAction extends BaseAction{
-	
+public class SkillInfoAction extends BaseAction{	
 	private ISkillInfoDao skillInfoDao = GuiceFactory.getInstance(ISkillInfoDao.class);
 	
 	@Override
 	protected ActionForward customeExecute(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response) {
+			HttpServletRequest request, HttpServletResponse response) throws IOException {
 		if(operate.equals("get_simple_list")){
 			return getSimpleList(mapping, form, request, response);
 		}
@@ -39,16 +38,12 @@ public class SkillInfoAction extends BaseAction{
 	}
 	
 	public ActionForward getSimpleList(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response) {
+			HttpServletRequest request, HttpServletResponse response) throws IOException {
 		int category = getParamInt("category", request);
 		int page = getParamInt("page", request);
 		
 		List<SkillSimpleInfo> simpleList = skillInfoDao.getSimpleList(category, page);
-		try {
-			writeJsonSuccess(simpleList, response);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		writeJsonSuccess(simpleList, response);
 		
 		return null;
 	}

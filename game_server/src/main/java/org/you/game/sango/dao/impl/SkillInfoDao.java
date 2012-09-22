@@ -28,7 +28,7 @@ import org.you.game.sango.model.SkillSimpleInfo;
 public class SkillInfoDao implements ISkillInfoDao{
 	static Logger logger = Logger.getLogger(SkillInfoDao.class);
 	
-	private static int pageSize = 20;
+	private static int pageSize = 10;
 	
 	@Override
 	public List<SkillSimpleInfo> getSimpleList(final int category, final int page) {
@@ -40,7 +40,7 @@ public class SkillInfoDao implements ISkillInfoDao{
 			public void setParam(PreparedStatement ps) throws SQLException {
 				ps.setInt(1, category);
 				ps.setInt(2, page*pageSize);
-				ps.setInt(3, (page+1)*pageSize);
+				ps.setInt(3, pageSize);
 			}
 			@Override
 			public Object parse(ResultSet rs) throws SQLException {

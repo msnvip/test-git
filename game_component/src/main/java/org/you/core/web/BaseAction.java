@@ -65,7 +65,7 @@ public abstract class BaseAction extends Action{
 	}
 	
 	protected abstract ActionForward customeExecute(ActionMapping mapping, ActionForm form,
-			HttpServletRequest request, HttpServletResponse response);
+			HttpServletRequest request, HttpServletResponse response) throws IOException;
 	
 	/**
 	 * 写出请求失败

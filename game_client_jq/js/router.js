@@ -4,10 +4,18 @@ define(['jquery', 'underscore', 'backbone',
 		'model/contact/contactCollection',
 		'modules/detail/contactDetail',
 		'model/contact/contactModel',
+		'model/skill/skillCollection',
+		'model/skill/skillModel',
+		'model/skill/skillSimpleModel',
+		'modules/skillList/skillListView',
 		'jqm'], 
-	function($, _, Backbone,HomeView,ContactView,ContactCollection,ContactDetailView,Contact) {
+	function($, _, Backbone,HomeView,ContactView,ContactCollection,ContactDetailView,Contact,
+			SkillListModel,SkillInfoModel,SkillSimpleModel,
+			SkillListView) {
 
     'use strict';
+    
+    
     var Router = Backbone.Router.extend({
        /*
 		routes设定了应用的路由，用户点击链接后指向不同的hash，
@@ -21,7 +29,7 @@ define(['jquery', 'underscore', 'backbone',
 	        'contactdetail/:name/:id' : 'showContactDetail',   			//detail view
 	        
 	        //====================================================//
-	        'skills/:category': 'showSkills',         					//list skill view
+	        'skills/:category/:page': 'showSkills',         					//list skill view
 	        'skillDetail/:category/:id': 'showSkillDetail',         	//skill detail view
 	        //====================================================//
 	        
@@ -38,7 +46,7 @@ define(['jquery', 'underscore', 'backbone',
 
 	    },
 
-	    showHome:function(actions){
+	    showHome: function(actions){
 	    	var homeView=new HomeView();
 	    	homeView.render();
 	    	this.changePage(homeView);
@@ -47,21 +55,23 @@ define(['jquery', 'underscore', 'backbone',
 	    /**
 	     * 显示特定类型的技能交换列表
 	     */
-	    showSkills(category){
-	    	var skillList = new SkillListModel(category);
+	    showSkills: function(category,page){
+	    	window.currentSkillCategory = category;
+	    	window.currentSkillPage = page;
+	    	var skillList = new SkillListModel();
 	    	var skillListView = new SkillListView({collection: skillList});
-	    	skillListView.bind("renderCompleted:SkillList", this.triggerChangeView, this);
-	    	skillList.fetch();
-	    }
+	    	skillListView.bind("renderCompleted:SkillSimpleList", this.triggerChangeView, this);
+	    	skillList.fetch(category,page);
+	    },
 	    /**
 	     * 显示详细的技能交换信息
 	     */
-	    showSkillDetail(category,id){
+	    showSkillDetail: function(category,id){
 	    	var skillInfo = new SkillModel(category,id);
 	    	var skillView = new SkillView({model: skillInfo});
 	    	skillView.bind("renderCompleted:Skill", this.triggerChangeView, this);
 	    	skillInfo.fetch();
-	    }
+	    },
 	    
 	    showContact:function(actions){
 	    	//first, we fetch data to initialize view

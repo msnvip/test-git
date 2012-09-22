@@ -1,12 +1,19 @@
 .list-title{
 	text-align: center;
 }
-/*
+.ui-content{
+	padding-top: 2px;
+	padding-left: 4px;
+	padding-right: 4px;
+}
+.skill_list_view{
+	margin-top: 1px !important;
+}
 .content-primary {
-	padding: 0 15px 0 15px ;
+	margin-top: -14px;
 }
 
-
+/*
 p.intro {
 	margin: 2em 0;
 }

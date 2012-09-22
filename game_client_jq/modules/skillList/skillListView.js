@@ -8,12 +8,12 @@ define(['jquery', 'underscore', 'backbone', 'text!modules/skillList/skillListVie
     template: _.template(listViewTemplate),
 
     initialize: function(){
-        this.collection.bind('fetchCompleted:SkillList',this.render,this);
+        this.collection.bind('fetchCompleted:SkillSimpleList',this.render,this);
     },
     
     render: function(){
       $(this.el).append(this.template({data:this.collection.toJSON()}));
-      this.trigger("renderCompleted:SkillList",this,"test parameter");
+      this.trigger("renderCompleted:SkillSimpleList",this,"test parameter");
       return this;
     }
   });
