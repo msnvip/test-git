@@ -64,16 +64,16 @@ public class SkillInfoDao implements ISkillInfoDao{
 	}
 
 	@Override
-	public SkillInfo getSkillInfo(long userId, int infoId) {
+	public SkillInfo getSkillInfo(final long userId, final int infoId) {
 		String sql = " select * from skill_info where id = ? ";
 		OpUniq op = new OpUniq(sql, "skill"){
 			@Override
 			public void setParam(PreparedStatement ps) throws SQLException {
-				super.setParam(ps);
+				ps.setInt(1, infoId);
 			}
 			@Override
 			public Object parse(ResultSet rs) throws SQLException {
-				return super.parse(rs);
+				return SkillInfo.getInstance(rs);
 			}			
 		};
 		SkillInfo info = null;

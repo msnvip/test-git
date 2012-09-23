@@ -1,0 +1,56 @@
+<div data-role="header" data-theme="f" data-position="fixed">
+	<h1>详细信息</h1>
+	<a href="#skills/<%=currentSkillCategory%>/<%=currentSkillPage%>" data-icon="back"
+		data-direction="reverse">返回</a>
+</div>
+<div data-role="content">
+	<div class="content-primary skill-detail-info">	
+		<div class="info-panel">
+			<p><strong>标题:</strong> <%=title%></p>
+			<p><strong>发布时间:</strong><%=createTime%></p>
+			<hr/>
+			<div class="ui-grid-a">
+				<div class="ui-block-a"><strong>联系人:</strong><%=nickName%></div>
+				<div class="ui-grid-a ui-block-b">
+					<div class="ui-block-a"><strong>性别:</strong><%=selfSex%></div>
+					<div class="ui-block-b"><strong>年龄:</strong><%=age%></div>
+				</div>
+			</div>		
+		</div>	
+		<div class="info-panel">
+			<p><strong>拥有技能:</strong><%=haveSkill%></p>
+			<p><strong>期望技能:</strong><%=hopeSkill%></p>
+			<p><strong>期望性别:</strong><%=hopeSex%></p>
+		</div>
+		<div class="info-panel">
+			<p><strong>简介:</strong><%=content%></p>	
+		</div>
+		<div class="info-panel">
+			<p>
+				<div class="ui-grid-a">
+					<div class="ui-block-a"><strong>Eamil:</strong><%=email%></div>				
+					<div class="ui-block-b">
+						<a href="mailto:<%=email%>">邮件</a>
+					</div>		
+				</div>
+			</p>
+			<p><strong>QQ:</strong><%=qq%></p>
+			<p>
+				<div class="ui-grid-a">
+					<div class="ui-block-a"><strong>Phone:</strong><%=phone%></div>				
+					<div class="ui-block-b">
+						<a href="tel:<%=phone%>" >拨号</a>
+					</div>		
+				</div>
+			</p>
+			<p>
+			<div class="ui-grid-a">
+				<div class="ui-block-a"><strong>Tel:</strong><%=tel%></div>				
+				<div class="ui-block-b">
+					<a href="tel:<%=tel%>" >拨号</a>
+				</div>			
+			</div>
+			</p>
+		</div>						
+	</div>
+</div>

@@ -8,10 +8,11 @@ define(['jquery', 'underscore', 'backbone',
 		'model/skill/skillModel',
 		'model/skill/skillSimpleModel',
 		'modules/skillList/skillListView',
+		'modules/skillList/skillDetailView',
 		'jqm'], 
 	function($, _, Backbone,HomeView,ContactView,ContactCollection,ContactDetailView,Contact,
 			SkillListModel,SkillInfoModel,SkillSimpleModel,
-			SkillListView) {
+			SkillListView, SkillDetailView) {
 
     'use strict';
     
@@ -29,8 +30,8 @@ define(['jquery', 'underscore', 'backbone',
 	        'contactdetail/:name/:id' : 'showContactDetail',   			//detail view
 	        
 	        //====================================================//
-	        'skills/:category/:page': 'showSkills',         					//list skill view
-	        'skillDetail/:category/:id': 'showSkillDetail',         	//skill detail view
+	        'skills/:category/:page': 'showSkills',         			//list skill view
+	        'skillDetail/:userId/:id': 'showSkillDetail',         		//skill detail view
 	        //====================================================//
 	        
 	        '*actions': 'defaultAction' 								//default action
@@ -66,11 +67,11 @@ define(['jquery', 'underscore', 'backbone',
 	    /**
 	     * 显示详细的技能交换信息
 	     */
-	    showSkillDetail: function(category,id){
-	    	var skillInfo = new SkillModel(category,id);
-	    	var skillView = new SkillView({model: skillInfo});
-	    	skillView.bind("renderCompleted:Skill", this.triggerChangeView, this);
-	    	skillInfo.fetch();
+	    showSkillDetail: function(userId,id){
+	    	var skillInfo = new SkillInfoModel();
+	    	var skillDetailView = new SkillDetailView({model: skillInfo});
+	    	skillDetailView.bind("renderCompleted:SkillInfoDetail", this.triggerChangeView, this);
+	    	skillInfo.fetch(userId, id);
 	    },
 	    
 	    showContact:function(actions){
@@ -102,7 +103,7 @@ define(['jquery', 'underscore', 'backbone',
 	    	console.log("changePage" + view.el);
             //设定外层div容器的data-role为'page'，以支持jquery mobile
 			$(view.el).attr('data-role', 'page');   
-			$(view.el).attr('data-theme', 'a');   
+			//$(view.el).attr('data-theme', 'a');   
 			
                 //插入dom
       		$('body').append($(view.el));  

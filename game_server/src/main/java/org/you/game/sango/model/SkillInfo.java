@@ -17,7 +17,7 @@ import org.apache.log4j.Logger;
  * @since 1.0
  */
 public class SkillInfo {
-static Logger logger = Logger.getLogger(SkillInfo.class);
+	private static Logger logger = Logger.getLogger(SkillInfo.class);
 
 	private int id;	
 	private long userId;

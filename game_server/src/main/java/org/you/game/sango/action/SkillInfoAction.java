@@ -16,6 +16,7 @@ import org.apache.struts.action.ActionMapping;
 import org.you.core.web.BaseAction;
 import org.you.game.sango.dao.ISkillInfoDao;
 import org.you.game.sango.dao.impl.GuiceFactory;
+import org.you.game.sango.model.SkillInfo;
 import org.you.game.sango.model.SkillSimpleInfo;
 
 /**
@@ -33,6 +34,18 @@ public class SkillInfoAction extends BaseAction{
 		if(operate.equals("get_simple_list")){
 			return getSimpleList(mapping, form, request, response);
 		}
+		else if(operate.equals("get_skill_detail")){
+			return getSkillDetail(mapping, form, request, response);
+		}
+		return null;
+	}
+	
+	public ActionForward getSkillDetail(ActionMapping mapping, ActionForm form,
+			HttpServletRequest request, HttpServletResponse response) throws IOException {
+		long userId = getParamInt("userId", request);
+		int infoId = getParamInt("id", request);
+		SkillInfo skillInfo = skillInfoDao.getSkillInfo(userId, infoId);
+		writeJsonSuccess(skillInfo, response);
 		
 		return null;
 	}

@@ -2,6 +2,20 @@
 //window.SkillWebServer="http://yourua.gicp.net/skill_server/";
 window.SkillWebServer="http://192.168.1.102/skill_server/";
 window.SkillPageSize=10;
+window.CurrentCity="北京";
+window.CurrentCityId="010";
+
+
+
+setTimeout(custome_init,1000);
+//处理默认自定义初始化工作
+function custome_init(){
+	//初始化默认城市
+	
+	//拉取弹窗信息
+	
+	makeTrace("handled custome init");
+}
 
 function makeTrace(txt,obj){
 	if (window.console) {
